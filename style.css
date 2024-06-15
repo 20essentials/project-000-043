@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-image: radial-gradient(transparent, #222);
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 1000px;
+
+  .domino {
+    width: 200px;
+    height: 350px;
+    background-color: #fff;
+    transform-style: preserve-3d;
+    transform: rotateX(70deg);
+    transition: .5s;
+    border-radius: 10px;
+
+    &::before {
+      width: 100%;
+      height: 50px;
+      background-color: #ddd;
+      position: absolute;
+      bottom: 6px;
+      border-radius: 10px 10px 0 0;
+      left: 0;
+      content: '';
+      transform-origin: bottom;
+      transform: rotateX(80deg);
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      bottom: 1px;
+      border-radius: 7px;
+      background-color: #fff;
+      z-index: 50;
+      height: 30px;
+      transform: rotateX(5deg);
+    }
+
+    &:hover {
+      transform: rotateX(50deg);
+    }
+
+    .line {
+      width: 90%;
+      height: 1rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      box-shadow: inset 10px 10px 10px #222, inset -10px -10px 10px #2224;
+      left: 5%;
+      border-radius: 10px;
+    }
+
+    .point {
+      width: 2rem;
+      height: 2rem;
+      box-shadow: inset 10px 10px 10px #222, inset -10px -10px 10px #2224;
+      border-radius: 50%;
+    }
+
+    .container-top,
+    .container-bottom {
+      background-color: transparent;
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      border-radius: 10px;
+    }
+
+    .container-top {
+      position: absolute;
+      top: 0;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      justify-content: center;
+      gap: 3rem;
+      align-content: center;
+
+      .point-center {
+        position: inherit;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+    }
+
+
+    .container-bottom {
+      bottom: 0;
+      position: absolute;
+
+      .point {
+        position: inherit;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+      }
+    }
+
+    
+
+
+  }
+}
